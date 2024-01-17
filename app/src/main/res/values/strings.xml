@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="transaction_type">Transaction Type:</string>
+    <string name="amount">Amount:</string>
+    <string name="current_balance">current Balance:</string>
+    <string name="transaction_id">Transaction ID:</string>
+    <string name="account">Account:</string>
+    <string name="date">Date:</string>
+</resources>
