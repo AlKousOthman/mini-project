@@ -6,6 +6,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.joincoded.test.Transactions.Transaction;
+
 public class DetailsActivity extends AppCompatActivity {
 
     @Override

@@ -1,4 +1,4 @@
-package com.joincoded.test;
+package com.joincoded.test.Transactions;
 
 public enum TransactionType {
 

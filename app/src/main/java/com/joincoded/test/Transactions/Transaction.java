@@ -1,14 +1,14 @@
-package com.joincoded.test;
+package com.joincoded.test.Transactions;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import kotlin.jvm.internal.SerializedIr;
 
-public class Transaction implements SerializedIr {
+public class Transaction implements Serializable {
 
     private int id;
     private String date;

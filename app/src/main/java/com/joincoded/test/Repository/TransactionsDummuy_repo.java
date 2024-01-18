@@ -1,4 +1,6 @@
-package com.joincoded.test;
+package com.joincoded.test.Repository;
+
+import com.joincoded.test.Transactions.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;

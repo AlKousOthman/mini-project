@@ -1,7 +1,6 @@
 package com.joincoded.test.Adapters;
 
-import android.content.Context;
-import android.transition.Transition;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.joincoded.test.OnClick;
 import com.joincoded.test.R;
-import com.joincoded.test.Transaction;
+import com.joincoded.test.TransactionItemClickListener;
+import com.joincoded.test.Transactions.Transaction;
 
 import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder> {
     private List<Transaction> transactions;
+    private TransactionItemClickListener transactionListener ;
 
-    public TransactionAdapter(List<Transaction> transactions) {
+    public TransactionAdapter(List<Transaction> transactions, TransactionItemClickListener transactionListener) {
         this.transactions = transactions;
+        this.transactionListener=transactionListener;
     }
 
     @NonNull
@@ -38,11 +39,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onItemClickListener != null ){
-                    onItemClickListener.onItemClick(transaction);
-
-
-                }
+                transactionListener.onItemClick(transaction);
             }
         });
 
@@ -69,12 +66,6 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             textViewBalance = itemView.findViewById(R.id.textViewBalance);
             textViewId = itemView.findViewById(R.id.textViewId);
             textViewAccount = itemView.findViewById(R.id.textViewAccount);
-        }
-Intet intet = getIntent();
-        if (intent != null && intent.hasExtra("Transaction")){
-            Transaction transaction = (Transaction) intent.getSerializableExtra("Transaction")
-            assert  transaction != null;
-            openTransactionDetails(transactions);
         }
         public void bind(Transaction transaction) {
         }

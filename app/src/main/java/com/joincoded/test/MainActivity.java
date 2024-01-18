@@ -1,20 +1,23 @@
 package com.joincoded.test;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.joincoded.test.Adapters.TransactionAdapter;
+import com.joincoded.test.Transactions.Transaction;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TransactionItemClickListener {
 
     private RecyclerView recyclerViewMain;
     private TransactionAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,20 +26,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewMain = findViewById(R.id.recyclerViewMain);
         recyclerViewMain.setLayoutManager(new LinearLayoutManager(this));
         List<Transaction> transactions = generateSampleTransactions();
-        adapter = new TransactionAdapter(transactions);
+        adapter = new TransactionAdapter(transactions, this);
         recyclerViewMain.setAdapter(adapter);
     }
 
-@Override
-public void onItemClick(Transaction transaction){
-        Intent intent = new Intent(TransactionListActivity.this, TransactionDetailActivity.this);
-        intent.putExtra("Transaction", (CharSequence) transaction);
-        startActivity(intent);
-}
-    public void openTransactionsList(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    @Override
+    public void onItemClick(Transaction transaction) {
+        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+        intent.putExtra("Transaction", transaction);
         startActivity(intent);
     }
+
 
     private List<Transaction> generateSampleTransactions() {
         List<Transaction> transactions = new ArrayList<>();
@@ -48,12 +48,4 @@ public void onItemClick(Transaction transaction){
         return transactions;
     }
 
-
-    private void openTransactionDetails(Transaction transaction) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra("transaction", (CharSequence) transaction);
-        startActivity(intent);
-    }
 }
-
-
